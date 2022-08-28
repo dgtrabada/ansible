@@ -1,0 +1,29 @@
+# {{ ansible_managed }}
+# /etc/nsswitch.conf
+#
+# Example configuration of GNU Name Service Switch functionality.
+# If you have the `glibc-doc-reference' and `info' packages installed, try:
+# `info libc "Name Service Switch"' for information about this file.
+
+
+{% if nis_server %}
+passwd:         files systemd
+group:          files systemd
+shadow:         files
+gshadow:        files
+{% else %}
+passwd:         files systemd nis
+group:          files systemd nis
+shadow:         files nis
+gshadow:        files
+
+{% endif %}
+hosts:          files dns
+networks:       files
+
+protocols:      db files
+services:       db files
+ethers:         db files
+rpc:            db files
+
+netgroup:       nis

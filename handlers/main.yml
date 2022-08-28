@@ -1,0 +1,20 @@
+---
+# handlers file for cluster-ubuntu22.04
+- name: restart rpcbind
+  service: name=rpcbind state=restarted
+
+- name: restart ypbind
+  service: name=ypbind state=restarted
+  when: not nis_server|bool
+
+- name: restart ypserv
+  service: name=ypserv state=restarted
+  when: nis_server|bool
+
+- name: enable autofs
+  service: name=autofs state=enabled
+  when: nis_server|bool
+
+- name: restart slurmd
+  service: name=slurmd state=restart
+  when: nis_server|bool

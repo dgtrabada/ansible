@@ -1,0 +1,96 @@
+---
+# tasks file for cluster-ubuntu22.04
+- name: install tree
+  apt:
+    name: tree
+    state: latest
+
+- name: install nis common packages
+  package:
+    name: nis
+    state: latest
+
+- name : template in defaultdomain
+  template:
+    src: defaultdomain.j2
+    dest: /etc/defaultdomain
+  when: not nis_server|bool
+
+- name : template in nsswitch - conditionals inside template
+  template:
+    src: nsswitch.conf.j2
+    dest: /etc/nsswitch.conf
+  when: not nis_server|bool 
+
+- name : template in yp.conf
+  template:
+    src: yp.conf.j2
+    dest: /etc/yp.conf
+  when: not nis_server|bool 
+  notify:
+    - restart rpcbind
+    - restart ypbind
+
+- name: install nfs-common 
+  package:
+    name: nfs-common
+    state: latest
+  when: not nis_server|bool
+
+- name: install autofs
+  package:
+    name: autofs
+    state: latest
+  when: not nis_server|bool
+
+- name : template in auto.master
+  template:
+    src: auto.master.j2
+    dest: /etc/auto.master
+  when: not nis_server|bool
+
+- name : template auto.home
+  template:
+    src: auto.home.j2
+    dest: /etc/auto.home
+  when: not nis_server|bool
+
+- name : template auto.share
+  template:
+    src: auto.share.j2
+    dest: /etc/auto.share
+  when: not nis_server|bool
+  notify:
+    enable autofs
+
+- name: install slurmd
+  package:
+    name: slurmd
+    state: latest
+  when: not nis_server|bool
+
+- name : copy munge.key
+  template:
+    src: /etc/munge/munge.key
+    dest: /etc/munge/munge.key
+  when: not nis_server|bool
+
+- name : copy slurm.conf
+  template:
+    src:  /etc/slurm-llnl/slurm.conf
+    dest: /etc/slurm-llnl/slurm.conf
+  when: not nis_server|bool
+  notify:
+    restart slurmd
+
+- name: install  environment-modules
+  package:
+    name:  environment-modules
+    state: latest
+  when: not nis_server|bool
+
+- name : copy module_test
+  template:
+    src:  /usr/share/modules/modulefiles/test
+    dest:  /usr/share/modules/modulefiles/test
+  when: not nis_server|bool

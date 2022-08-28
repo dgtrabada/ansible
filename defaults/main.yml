@@ -1,0 +1,7 @@
+---
+# defaults file for cluster-ubuntu22.04
+nis_domain: servidor.X.nis
+nis_server_address: "172.16.0.10"
+nis_server: False
+nis_packages:
+ - ypbind
