@@ -1,12 +1,12 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Install a client for a nis, nfs, autofs, slurm and module.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Ubuntu 22.04
 
 Role Variables
 --------------
@@ -30,7 +30,7 @@ Including an example of how to use your role (for instance, with variables passe
 License
 -------
 
-BSD
+GPLv3
 
 Author Information
 ------------------
