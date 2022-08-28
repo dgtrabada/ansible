@@ -21,4 +21,4 @@
 
 - name: enable munge
   service: name=munge state=enable
-  when: nin_server|bool
+  when: nis_server|bool
