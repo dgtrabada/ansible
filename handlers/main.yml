@@ -18,3 +18,7 @@
 - name: restart slurmd
   service: name=slurmd state=restart
   when: nis_server|bool
+
+- name: enable munge
+  service: name=munge state=enable
+  when: nin_server|bool

@@ -74,6 +74,8 @@
     src: /etc/munge/munge.key
     dest: /etc/munge/munge.key
   when: not nis_server|bool
+  notigy:
+    enable munge
 
 - name : copy slurm.conf
   template:
