@@ -30,6 +30,15 @@
   notify:
     - restart rpcbind
     - restart ypbind
+    
+- name: enable and start ypbind
+  service:
+    name: ypbind
+    enabled: yes
+    state: started
+  when: not nis_server|bool 
+  notify:
+    - restart ypbind
 
 - name: install nfs-common 
   package:
