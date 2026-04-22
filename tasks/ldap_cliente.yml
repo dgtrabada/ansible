@@ -1,0 +1,42 @@
+---
+
+- name: Instalar paquetes cliente LDAP modernos
+  apt:
+    name:
+      - libnss-ldap       # Para NSS (getent passwd, grupos)
+      - libpam-ldap       # Para PAM (autenticación)
+      - ldap-utils         # Utilidades como ldapsearch
+    state: present
+    update_cache: yes
+
+- name: Configurar ldap.conf
+  template:
+    src: ldap.conf.j2
+    dest: /etc/ldap.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+
+- name: Configurar NSS para usar LDAP
+  template:
+    src: nsswitch.conf.j2
+    dest: /etc/nsswitch.conf
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+
+- name: Añadir entrada del servidor LDAP en /etc/hosts (VM)
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ ldap_server_ip }} {{ ldap_server_host }} {{ ldap_domain }}"
+    state: present
+  when: ldap_env == "vm"
+
+- name: Aviso configuración manual en contenedor
+  debug:
+    msg: >
+      En entorno container debes añadir manualmente la siguiente línea en /etc/hosts:
+      {{ ldap_server_ip }} {{ ldap_server_host }} {{ ldap_domain }}
+  when: ldap_env == "container"

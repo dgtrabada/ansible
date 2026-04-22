@@ -1,0 +1,114 @@
+dn: ou=usuarios, dc=ldap, dc=tunombre, dc=local
+objectClass: organizationalUnit
+ou: usuarios
+
+dn: ou=grupos,dc=ldap, dc=tunombre, dc=local
+objectClass: organizationalUnit
+ou: grupos
+
+dn: cn=GA,ou=grupos,dc=ldap,dc=tunombre,dc=local
+objectClass: posixGroup
+cn: GA
+gidNumber: 501
+
+dn: cn=GB,ou=grupos,dc=ldap,dc=tunombre,dc=local
+objectClass: posixGroup
+cn: GB
+gidNumber: 502
+
+dn: uid=tunombre1,ou=usuarios,dc=ldap,dc=tunombre,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: tunombre1
+sn: sntunombre1
+givenName: tunombre1
+cn: tunombre1
+displayName: tunombre1
+uidNumber: 1010
+gidNumber: 501
+userPassword: alumno
+loginShell: /bin/bash
+homeDirectory: /home/tunombre1
+shadowExpire: -1
+shadowFlag: 0
+shadowWarning: 7
+shadowMin: 8
+shadowMax: 999999
+shadowLastChange: 10877
+mail: tunombre1@ldap.tunombre.local
+postalCode: 28027
+
+dn: uid=tunombre2,ou=usuarios,dc=ldap,dc=tunombre,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: tunombre2
+sn: sntunombre2
+givenName: tunombre2
+cn: tunombre2
+displayName: tunombre2
+uidNumber: 1011
+gidNumber: 501
+userPassword: alumno
+loginShell: /bin/bash
+homeDirectory: /home/tunombre2
+shadowExpire: -1
+shadowFlag: 0
+shadowWarning: 7
+shadowMin: 8
+shadowMax: 999999
+shadowLastChange: 10877
+mail: tunombre2@ldap.tunombre.local
+postalCode: 28027
+
+
+
+dn: uid=tunombre3,ou=usuarios,dc=ldap,dc=tunombre,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: tunombre3
+sn: sntunombre3
+givenName: tunombre3
+cn: tunombre3
+displayName: tunombre3
+uidNumber: 1012
+gidNumber: 502
+userPassword: alumno
+loginShell: /bin/bash
+homeDirectory: /home/tunombre3
+shadowExpire: -1
+shadowFlag: 0
+shadowWarning: 7
+shadowMin: 8
+shadowMax: 999999
+shadowLastChange: 10877
+mail: tunombre3@ldap.tunombre.local
+postalCode: 28027
+
+
+dn: uid=tunombre4,ou=usuarios,dc=ldap,dc=tunombre,dc=local
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: tunombre4
+sn: sntunombre4
+givenName: tunombre4
+cn: tunombre4
+displayName: tunombre4
+uidNumber: 1013
+gidNumber: 502
+userPassword: alumno
+loginShell: /bin/bash
+homeDirectory: /home/tunombre4
+shadowExpire: -1
+shadowFlag: 0
+shadowWarning: 7
+shadowMin: 8
+shadowMax: 999999
+shadowLastChange: 10877
+mail: tunombre4@ldap.tunombre.local
+postalCode: 28027
+
+

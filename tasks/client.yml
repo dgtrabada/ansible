@@ -1,0 +1,3 @@
+# cliente LDAP
+- name: Configurar cliente LDAP en el servidor
+  import_tasks: ldap_cliente.yml
