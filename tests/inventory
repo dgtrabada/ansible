@@ -1,2 +1,17 @@
-[server]
-server3 ansible_host=172.16.0.13
+# mkdir /etc/ansible
+# cd /etc/ansible
+# ln -s /root/cluster-ldap-slurm/tests/inventory hosts
+
+[servidor]
+compute-0-0 ansible_host=172.16.0.10
+
+[clientes]
+compute-0-1 ansible_host=172.16.0.11
+compute-0-2 ansible_host=172.16.0.12
+
+[all:vars]
+ldap_domain=ldap.tunombre.local
+ldap_organization=tunombre
+ldap_password=alumno
+ldap_server_host=compute-0-0
+ldap_server_ip=172.16.0.10
