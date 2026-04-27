@@ -15,3 +15,9 @@ ldap_organization=tunombre
 ldap_password=alumno
 ldap_server_host=compute-0-0
 ldap_server_ip=172.16.0.10
+
+[servidor:vars]
+ldap_role=servidor
+
+[clientes:vars]
+ldap_role=cliente
