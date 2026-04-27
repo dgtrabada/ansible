@@ -1,6 +1,13 @@
 ---
 #Servidor LDAP
 
+- name: Instalar debconf-utils para configuracione
+  apt:
+    name:
+      - debconf-utils
+    state: present
+    update_cache: yes
+
 - name: Preconfigurar slapd con debconf
   debconf:
     name: slapd
