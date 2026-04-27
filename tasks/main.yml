@@ -2,10 +2,10 @@
 # Determinar qué rol jugar basado en el hostname o variable
 - name: Incluir tareas para servidor LDAP
   include_tasks: server.yml
-  when: 
-    - ansible_hostname == "compute-0-0" or ldap_role == "servidor"
+  when:
+    - ansible_facts.hostname == "compute-0-0" or ldap_role == "servidor"
 
 - name: Incluir tareas para cliente LDAP
   include_tasks: client.yml
-  when: 
-    - ansible_hostname != "compute-0-0" and ldap_role == "cliente"
+  when:
+    - ansible_facts.hostname != "compute-0-0" and ldap_role == "cliente"

@@ -1,12 +1,12 @@
 Role Name
 =========
 
-Install a client for a nis, nfs, autofs, slurm and module.
+Install a client for a LDAP ...., nfs, autofs, slurm and module.
 
 Requirements
 ------------
 
-Ubuntu 22.04
+Ubuntu 24.04
 
 Role Variables
 --------------
