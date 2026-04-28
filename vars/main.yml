@@ -4,7 +4,6 @@ ldap_domain: "ldap.tunombre.local"
 ldap_server_ip: "172.16.0.10"
 ldap_org: "tunombre"
 ldap_password: "alumno"
-ldap_backend: "HDB"
 
 ldap_env: "container"   # valores posibles: "vm" o "container"
 

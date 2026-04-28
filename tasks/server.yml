@@ -20,7 +20,6 @@
     - { question: "shared/organization", value: "{{ ldap_org }}", vtype: "string" }
     - { question: "slapd/password1", value: "{{ ldap_password }}", vtype: "password" }
     - { question: "slapd/password2", value: "{{ ldap_password }}", vtype: "password" }
-    - { question: "slapd/backend", value: "{{ ldap_backend }}", vtype: "select" }
     - { question: "slapd/purge_database", value: "true", vtype: "boolean" }
     - { question: "slapd/move_old_database", value: "true", vtype: "boolean" }
     - { question: "slapd/allow_ldap_v2", value: "false", vtype: "boolean" }
