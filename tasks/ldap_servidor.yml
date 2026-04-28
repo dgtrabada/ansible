@@ -1,0 +1,48 @@
+---
+#Servidor LDAP
+
+- name: Instalar debconf-utils para configuracione
+  apt:
+    name:
+      - debconf-utils
+    state: present
+    update_cache: yes
+
+- name: Preconfigurar slapd con debconf
+  debconf:
+    name: slapd
+    question: "{{ item.question }}"
+    value: "{{ item.value }}"
+    vtype: "{{ item.vtype }}"
+  loop:
+    - { question: "slapd/no_configuration", value: "false", vtype: "boolean" }
+    - { question: "slapd/domain", value: "{{ ldap_domain }}", vtype: "string" }
+    - { question: "shared/organization", value: "{{ ldap_org }}", vtype: "string" }
+    - { question: "slapd/password1", value: "{{ ldap_password }}", vtype: "password" }
+    - { question: "slapd/password2", value: "{{ ldap_password }}", vtype: "password" }
+    - { question: "slapd/purge_database", value: "true", vtype: "boolean" }
+    - { question: "slapd/move_old_database", value: "true", vtype: "boolean" }
+    - { question: "slapd/allow_ldap_v2", value: "false", vtype: "boolean" }
+
+- name: Instalar slapd y ldap-utils
+  apt:
+    name:
+      - slapd
+      - ldap-utils
+    state: present
+    update_cache: yes
+
+- name: Reconfigurar slapd en modo no interactivo
+  command: dpkg-reconfigure -f noninteractive slapd
+
+- name: Asegurar que slapd está iniciado (máquina normal)
+  service:
+    name: slapd
+    state: started
+    enabled: yes
+  when: ldap_env == "vm"
+
+- name: Iniciar slapd manualmente (contenedor)
+  command: /etc/init.d/slapd start
+  when: ldap_env == "container"
+  ignore_errors: yes

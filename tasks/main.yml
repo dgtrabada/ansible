@@ -1,5 +1,6 @@
 ---
 # Determinar qué rol jugar basado en el hostname o variable
+
 - name: Incluir tareas para servidor LDAP
   include_tasks: server.yml
   when:
