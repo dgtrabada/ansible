@@ -27,7 +27,7 @@ cn: tunombre1
 displayName: tunombre1
 uidNumber: 1010
 gidNumber: 501
-userPassword: alumno
+userPassword: {SSHA}scgy2TQOZ87Z+Uaorx7N06U5beWV83wp
 loginShell: /bin/bash
 homeDirectory: /home/tunombre1
 shadowExpire: -1
@@ -50,7 +50,7 @@ cn: tunombre2
 displayName: tunombre2
 uidNumber: 1011
 gidNumber: 501
-userPassword: alumno
+userPassword: {SSHA}scgy2TQOZ87Z+Uaorx7N06U5beWV83wp
 loginShell: /bin/bash
 homeDirectory: /home/tunombre2
 shadowExpire: -1
@@ -75,7 +75,7 @@ cn: tunombre3
 displayName: tunombre3
 uidNumber: 1012
 gidNumber: 502
-userPassword: alumno
+userPassword: {SSHA}scgy2TQOZ87Z+Uaorx7N06U5beWV83wp
 loginShell: /bin/bash
 homeDirectory: /home/tunombre3
 shadowExpire: -1
@@ -99,7 +99,7 @@ cn: tunombre4
 displayName: tunombre4
 uidNumber: 1013
 gidNumber: 502
-userPassword: alumno
+userPassword: {SSHA}scgy2TQOZ87Z+Uaorx7N06U5beWV83wp
 loginShell: /bin/bash
 homeDirectory: /home/tunombre4
 shadowExpire: -1
